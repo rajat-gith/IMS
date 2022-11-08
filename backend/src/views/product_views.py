@@ -34,15 +34,35 @@ def getProductsById(request,pk):
 @api_view(['POST','GET'])
 def addProduct(request):
     data=request.data
+    color=data['color']
+    category=data['category']
+    
+    for i in range(0,len(color)):
+        if(colors[i][0]==color):
+            color_index=i
+    
+    for i in range(0,len(categorys)):
+        if(categorys[i][0]==category):
+            category_index=i
+            
     Product=product.objects.create(
         product_name=data['product_name'],
         description=data['description'],
-        brand=models['brand'],
-        color=models['color'],
-        category=models['category'],
-        quantity=models['quantity']
-
+        color=colors[color_index][0],
+        category=categorys[category_index][0],
+        quantity=data['quantity'],
+        price=data['price']
     )
+    print(data['brand']['_id'])
+    for brand in data['brand']['_id']:
+        brand_obj=brand.objects.get(_id=brand)
+        Product.brand.add(brand_obj)
+
+    print("P->",data['brand'])
+    # print(brand.objects.get(_id=data['brand']))
+    # print(data['brand'])
+    
+    
     serializer=ProductSerializer(Product,many=False)
     return Response(serializer.data)
 

@@ -17,13 +17,13 @@ colors=(
     ('Purple','purple')
 )
 
-category=(
+categorys=(
     ('Men','Men'),
     ('Women','Women'),
     ('Child','Child'),
     ('Unisex','Unisex')
 )
-sex=(
+sexs=(
     ('Male',"Male"),
     ("Female","Female")
 )
@@ -41,9 +41,9 @@ class brand(models.Model):
 class product(models.Model):
     product_name=models.CharField(max_length=200,null=True,blank=True)
     description=models.TextField(null=True,blank=True)
-    brand=models.ForeignKey(brand,null=True,blank=True,on_delete=models.CASCADE)
+    brand=models.ForeignKey(brand,on_delete=models.CASCADE,null=True,blank=True)
     color=models.CharField(max_length=200,choices=colors,blank=True)
-    category=models.CharField(max_length=200,choices=category,blank=True)
+    category=models.CharField(max_length=200,choices=categorys,blank=True)
     quantity=models.IntegerField(null=True,blank=True)
     price=models.IntegerField(null=True,blank=True)
     _id=models.AutoField(primary_key=True,editable=False)
@@ -55,7 +55,7 @@ class product(models.Model):
 class store_owner(models.Model):
     owner_name=models.CharField(max_length=200,blank=True,null=True)
     store_count=models.IntegerField(blank=True)
-    sex=models.CharField(choices=sex,blank=True,null=True,max_length=200)
+    sex=models.CharField(choices=sexs,blank=True,null=True,max_length=200)
     owner_status=models.CharField(max_length=200,null=True,blank=True,choices=status)
     _id=models.AutoField(primary_key=True,editable=False)
 

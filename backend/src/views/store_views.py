@@ -19,14 +19,14 @@ def getStoreOwners(request):
 
 @api_view(['GET'])
 def getStoreById(request,pk):
-    stores=stores.object.get(_id=pk)
-    serializer=StoreSerializer(stores,many=False)
+    store=stores.objects.get(_id=pk)
+    serializer=StoreSerializer(store,many=False)
     return Response(serializer.data)
 
 @api_view(['GET'])
 def getStoreOwnerById(request,pk):
-    store_owner=store_owner.objects.get(_id=pk)
-    serializers=StoreOwner_Serializer(store_owner,many=False)
+    owner=store_owner.objects.get(_id=pk)
+    serializers=StoreOwner_Serializer(owner,many=False)
     return Response(serializers.data)
 
 @api_view(['POST'])
