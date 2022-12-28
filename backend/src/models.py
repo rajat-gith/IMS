@@ -58,6 +58,7 @@ class store_owner(models.Model):
     sex=models.CharField(choices=sexs,blank=True,null=True,max_length=200)
     owner_status=models.CharField(max_length=200,null=True,blank=True,choices=status)
     _id=models.AutoField(primary_key=True,editable=False)
+    # store_list=models.ManyToManyField(stores)
 
     def __str__(self):
         return (self.owner_name)
