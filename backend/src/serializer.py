@@ -37,7 +37,7 @@ class UserSerializerWithToken(UserSerializer):
 
 class BrandSerializer(serializers.ModelSerializer):
     class Meta:
-        model=brand
+        model=Product_brand
         fields='__all__'
 
 class ProductSerializer(serializers.ModelSerializer):

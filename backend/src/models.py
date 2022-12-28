@@ -29,7 +29,7 @@ sexs=(
 )
 
 # Create your models here.
-class brand(models.Model):
+class Product_brand(models.Model):
     name=models.CharField(max_length=200,null=True,blank=True)
     quantity=models.IntegerField(blank=True)
     status=models.CharField(max_length=200,null=True,blank=True,choices=status)
@@ -41,7 +41,7 @@ class brand(models.Model):
 class product(models.Model):
     product_name=models.CharField(max_length=200,null=True,blank=True)
     description=models.TextField(null=True,blank=True)
-    brand=models.ForeignKey(brand,on_delete=models.CASCADE,null=True,blank=True)
+    brand=models.ForeignKey(Product_brand,on_delete=models.CASCADE,null=True,blank=True,default="2")
     color=models.CharField(max_length=200,choices=colors,blank=True)
     category=models.CharField(max_length=200,choices=categorys,blank=True)
     quantity=models.IntegerField(null=True,blank=True)
@@ -64,7 +64,7 @@ class store_owner(models.Model):
 
 class stores(models.Model):
     name=models.CharField(max_length=200,null=True,blank=True)
-    brands=models.ManyToManyField(brand)
+    brands=models.ManyToManyField(Product_brand)
     owner=models.ForeignKey(store_owner,on_delete=models.SET_NULL,null=True,blank=True)
     # outlets=models.IntegerField(blank=True)
     tagline=models.CharField(max_length=200,null=True,blank=True)
