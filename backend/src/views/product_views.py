@@ -66,9 +66,8 @@ def addProduct(request):
         price=data['price']
     )
     # print("P",type)
-    brand_obj = Product_brand.objects.get(_id=int(data['brand']))
-    brand_att = {"name": brand_obj.name, "quantity": brand_obj.quantity,
-                 "status": brand_obj.status, "_id": brand_obj._id}
+    brand_obj = Product_brand.objects.get(name=(data['brand']))
+
     New_Product.brand = brand_obj
     #  New_Product.brand.add(brand_obj)
 

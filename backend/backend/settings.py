@@ -167,9 +167,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
-CORS_ALLOW_ALL_ORIGINS: True
-CORS_ALLOWED_ORIGINS=[
-    "http://localhost:3000"
-]
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOWED_ORIGINS=[
+#     "http://localhost:3000",
+# ]
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 

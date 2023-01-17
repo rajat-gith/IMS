@@ -82,4 +82,7 @@ class sales(models.Model):
     quantity_shipment=models.IntegerField(blank=True,null=True)
     _id=models.AutoField(primary_key=True,editable=False)
 
+    def __int__(self):
+        return (self._id)
+
     
